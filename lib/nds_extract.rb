@@ -17,7 +17,7 @@ def flatten_a_o_a(aoa)
   result
 end
 def movie_with_director_name(director_name, movie_data)
-  { 
+  {
     :title => movie_data[:title],
     :worldwide_gross => movie_data[:worldwide_gross],
     :release_year => movie_data[:release_year],
@@ -27,38 +27,38 @@ def movie_with_director_name(director_name, movie_data)
 end
 # Your code after this point
 def movies_with_director_key(name, movies_collection)
-  movie_index = 0 
+  movie_index = 0
   result = []
   while movie_index < movies_collection.size do
     result << movie_with_director_name(name, movies_collection[movie_index])
-    movie_index += 1 
+    movie_index += 1
   end
-result 
+result
 end
 def gross_per_studio(collection)
   hash = {}
-  index = 0 
+  index = 0
   while index < collection.size do
     if hash[collection[index][:studio]]
       hash[collection[index][:studio]] += collection[index][:worldwide_gross]
       else
         hash[collection[index][:studio]] = collection[index][:worldwide_gross]
       end
-    index += 1 
-  end 
+    index += 1
+  end
   hash
    while index < collection.size do
      #binding.pry
       hash[collection[index][:studio]] = collection[index][:worldwide_gross]
-      index += 1 
+      index += 1
     end
     hash
 end
 def movies_with_directors_set(source)
-  source.map do |h| 
+  source.map do |h|
     movies_with_director_key(h[:name], h[:movies])
   end
-end  
+end
 #when given a Hash with keys :name and :movies,
 #returns an Array of Hashes that represent movies
 #and each Hash has a :director_name key set with the value that was in :name
