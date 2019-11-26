@@ -1,12 +1,10 @@
 require 'spec_helper'
-
 describe 'provided method' do
   describe 'flatten_a_o_a' do
     it 'flattens an a_a_a of Integers' do
       expect(flatten_a_o_a([[1,2],[3,4,5],[6]])).to eq([1,2,3,4,5,6])
     end
   end
-
   describe 'movie_with_director_name' do
     it "creates a new movie Hash with director's name provided" do
       director_name = "Byron Poodle"
@@ -17,12 +15,10 @@ describe 'provided method' do
         :title => "The Fire Hydrant of Doom"
       }
       new_movie = movie_with_director_name(director_name, movies_coll)
-
       expect(new_movie[:director_name]).to eq(director_name)
     end
   end
 end
-
 describe 'movies_with_director_key' do
   it 'adds a :director_name key an AoH of movies' do
     dir_name = "Byron Poodle"
@@ -32,7 +28,6 @@ describe 'movies_with_director_key' do
     expect(updated_movies[1][:director_name]).to eq(dir_name), "Should add director name to each movie Hash"
   end
 end
-
 describe 'movies_with_directors_set' do
   describe 'when given a Hash with keys :name and :movies,' do
     describe 'returns an Array of Hashes that represent movies' do
@@ -49,9 +44,8 @@ describe 'movies_with_directors_set' do
               { :title => "Biting" },
             ]
             }
-          ] 
+          ]
         }
-
         it 'correctly "distributes" Byron Poodle as :director_name of the first film' do
           # { :name => "A", :movies => [{ :title => "Test" }] }
           # becomes... [[{:title => "Test", :director_name => "A"}], ...[], ... []]
@@ -59,7 +53,6 @@ describe 'movies_with_directors_set' do
           expect(results.first.first[:director_name]).to eq("Byron Poodle"),
             "The first element of the AoA should have 'Byron Poodle' as :director_name"
         end
-
         it 'correctly "distributes" Nancy Drew as :director_name of the last film' do
           results = movies_with_directors_set(test_data)
           expect(results.last.first[:director_name]).to eq("Nancy Drew"),
@@ -69,7 +62,6 @@ describe 'movies_with_directors_set' do
     end
   end
 end
-
 describe 'gross_per_studio' do
   it 'collects each movie based on the studio key' do
     test_data = [
@@ -82,8 +74,6 @@ describe 'gross_per_studio' do
     expect(result["Omega Films"]).to eq(30), "We should collect the totals of films made by this Omega Films"
   end
 end
-
-
 describe 'The directors_database method can be processed by the studios_totals method' do
   describe "and correctly totals the directors' totals" do
     let(:expected) {
@@ -103,7 +93,6 @@ describe 'The directors_database method can be processed by the studios_totals m
        "MGM"=>83471511
       }
     }
-
     it "correctly total 'Universal'" do
       expect(studios_totals(directors_database)['Universal']).to eq(expected['Universal'])
     end
@@ -143,8 +132,5 @@ describe 'The directors_database method can be processed by the studios_totals m
     it "correctly total 'MGM'" do
       expect(studios_totals(directors_database)['MGM']).to eq(expected['MGM'])
     end
-
-
-
   end
 end
