@@ -72,40 +72,40 @@ def gross_per_studio(collection)
   #
   # Hash whose keys are the studio names and whose values are the sum
   # total of all the worldwide_gross numbers for every movie in the input Hashpp
-  # keys = collection.uniq { |h| h[:studio] }
-  # i = 0
-  #
-  # results = {}
-  # while i < keys.length
-  #   total= 0
-  #   o = 0
-  #   while o < collection.length
-  #     if collection[o][:studio] == keys[i][:studio]
-  #       total += collection[o][:worldwide_gross]
-  #     end
-  #     o+=1
-  #   end
-  # results[keys[i][:studio]]= total
-  # i+=1
-  # end
-  # results
-  hash = {}
-  index = 0
-  while index < collection.size do
-    if hash[collection[index][:studio]]
-      hash[collection[index][:studio]] += collection[index][:worldwide_gross]
-    else
-      hash[collection[index][:studio]] = collection[index][:worldwide_gross]
+  keys = collection.uniq { |h| h[:studio] }
+  i = 0
+
+  results = {}
+  while i < keys.length
+    total= 0
+    o = 0
+    while o < collection.length
+      if collection[o][:studio] == keys[i][:studio]
+        total += collection[o][:worldwide_gross]
+      end
+      o+=1
     end
-    index += 1
+  results[keys[i][:studio]]= total
+  i+=1
   end
-  hash
-  while index < collection.size do
-   #binding.pry
-    hash[collection[index][:studio]] = collection[index][:worldwide_gross]
-    index += 1
-  end
-  hash
+  results
+  # hash = {}
+  # index = 0
+  # while index < collection.size do
+  #   if hash[collection[index][:studio]]
+  #     hash[collection[index][:studio]] += collection[index][:worldwide_gross]
+  #   else
+  #     hash[collection[index][:studio]] = collection[index][:worldwide_gross]
+  #   end
+  #   index += 1
+  # end
+  # hash
+  # while index < collection.size do
+  #  #binding.pry
+  #   hash[collection[index][:studio]] = collection[index][:worldwide_gross]
+  #   index += 1
+  # end
+  # hash
 end
 
 def movies_with_directors_set(source)
